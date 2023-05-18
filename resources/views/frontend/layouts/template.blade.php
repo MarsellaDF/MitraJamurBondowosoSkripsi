@@ -6,6 +6,26 @@
 </head>
 
 <body>
+    <script>
+        // Menambahkan event listener untuk mendeteksi klik pada elemen di dalam iframe
+        document.addEventListener("click", handleClick, false);
+
+        // Fungsi yang akan dipanggil saat elemen di dalam iframe diklik
+        function handleClick(event) {
+            var segmentValue = "<?php Request::segment(1); ?>";
+            console.log("Ini route : " + segmentValue);
+            // Mendapatkan koordinat klik pada sumbu x dan sumbu y
+            var xCoordinate = event.clientX;
+            var yCoordinate = event.clientY;
+
+            // Mengirim pesan ke elemen induk dengan data koordinat
+            parent.postMessage({
+                x: xCoordinate,
+                y: yCoordinate,
+                body: "hadir"
+            }, "*");
+        }
+    </script>
     <header class="header">
         @include('frontend.layouts._partials.topbar')
     </header>
@@ -30,6 +50,7 @@
     baguetteBox.run('.section-galeri');
 </script>
 <script src="{{ asset('frontend/js/custom.js') }}"></script>
+
 @stack('js')
 
 </html>

@@ -54,7 +54,18 @@
         {{--  setTimeout(function() {
             clearInterval(timer);
         }, 10000);  --}}
+
+        function toggleDiv() {
+            var x = document.getElementById("myDIV");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
     </script>
+    <button type="button" id="toggleDivButton" onclick="toggleDiv()">Toggle div</button>
+    <div id="myDIV" style="display:none;">Hidden content</div>
 
     <!-- slider -->
     <section class="home-slider my-5">
