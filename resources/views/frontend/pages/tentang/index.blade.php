@@ -31,6 +31,64 @@
     </script>
 @endpush
 @section('frontend.content')
+    <div id="timer">00:00:00</div>
+    {{--  <script>
+        $(document).ready(function() {
+            $.ajax({
+                url: 'https://www.website-lain.com',
+                success: function(data) {
+                    $('#webvw').html(data);
+                }
+            });
+        });
+
+        function timerTime(reset) {
+            var seconds = 0;
+            var minutes = 0;
+            var hours = 0;
+
+            function timer() {
+                seconds++;
+                if (seconds == 60) {
+                    seconds = 0;
+                    minutes++;
+                }
+                if (minutes == 60) {
+                    minutes = 0;
+                    hours++;
+                }
+                var sec = seconds < 10 ? "0" + seconds : seconds;
+                var min = minutes < 10 ? "0" + minutes : minutes;
+                var hr = hours < 10 ? "0" + hours : hours;
+            }
+            tm = window.setInterval(timer, 1000);
+            // setInterval(timer, 1000);
+        }
+    </script>  --}}
+    <script>
+        // Mendapatkan elemen dengan ID "timer"
+        var timerElement = document.getElementById('timer');
+
+        // Mengatur waktu awal
+        var seconds = 0;
+        var minutes = 0;
+        var hours = 0;
+
+        // Mengatur interval untuk update setiap detik
+        var timer = setInterval(function() {
+            // Menambahkan 1 detik ke variabel seconds
+            seconds++;
+
+            // Menampilkan waktu pada elemen dengan ID "timer"
+            timerElement.textContent = seconds;
+        }, 1000);
+
+        // Menghentikan timer setelah 10 detik
+        {{--  setTimeout(function() {
+            clearInterval(timer);
+        }, 10000);  --}}
+    </script>
+
     <div class="section-produk mb-5">
         <div class="breadcrumb-produk text-center">
             <h5 class="">Tentang Kami</h5>

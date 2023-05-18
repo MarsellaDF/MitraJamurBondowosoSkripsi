@@ -31,6 +31,31 @@
     </script>
 @endpush
 @section('frontend.content')
+    <div id="timer">00:00:00</div>
+    <script>
+        // Mendapatkan elemen dengan ID "timer"
+        var timerElement = document.getElementById('timer');
+
+        // Mengatur waktu awal
+        var seconds = 0;
+        var minutes = 0;
+        var hours = 0;
+
+        // Mengatur interval untuk update setiap detik
+        var timer = setInterval(function() {
+            // Menambahkan 1 detik ke variabel seconds
+            seconds++;
+
+            // Menampilkan waktu pada elemen dengan ID "timer"
+            timerElement.textContent = seconds;
+        }, 1000);
+
+        // Menghentikan timer setelah 10 detik
+        {{--  setTimeout(function() {
+            clearInterval(timer);
+        }, 10000);  --}}
+    </script>
+
     <!-- slider -->
     <section class="home-slider my-5">
         <div class="container-fluid">
