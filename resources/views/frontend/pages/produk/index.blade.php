@@ -93,7 +93,8 @@
                                             </div>
                                             <img class=" img-fluid" src="{{ $item->gambar }}" alt="card image">
                                             <!-- <p class="card-text">This is basic card with image on top, title, description and button.This is basic card with image on top, title, description and button.This is basic card with image on top, title, description and button.</p> -->
-                                            <a href="{{ url('produk/detail-produk/' . $item->slug) }}" target="_blank"
+                                            {{--  <a href="{{ url('produk/detail-produk/' . $item->slug) }}" target="_blank"  --}}
+                                            <a href="{{ url('produk/detail-produk/' . $item->slug) }}"
                                                 class="btn btn-primary mt-4 text-white">Lihat
                                                 produk</a>
                                         </div>

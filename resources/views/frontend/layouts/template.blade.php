@@ -12,17 +12,27 @@
 
         // Fungsi yang akan dipanggil saat elemen di dalam iframe diklik
         function handleClick(event) {
-            var segmentValue = "<?php Request::segment(1); ?>";
-            console.log("Ini route : " + segmentValue);
+            var segment = window.location.pathname;
+            console.log("Ini route : " + segment);
             // Mendapatkan koordinat klik pada sumbu x dan sumbu y
             var xCoordinate = event.clientX;
             var yCoordinate = event.clientY;
+
+            var screenx = window.innerWidth;
+            var screeny = window.innerHeight;
+
+            var scrollx = document.documentElement.scrollWidth;
+            var scrolly = document.documentElement.scrollHeight;
 
             // Mengirim pesan ke elemen induk dengan data koordinat
             parent.postMessage({
                 x: xCoordinate,
                 y: yCoordinate,
-                body: "hadir"
+                screenWidth: screenx,
+                screenHeight: screeny,
+                scrollHorizontal: scrollx,
+                scrollVertical: scrolly,
+                body: segment
             }, "*");
         }
     </script>
