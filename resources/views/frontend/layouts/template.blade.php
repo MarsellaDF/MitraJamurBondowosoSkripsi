@@ -10,30 +10,33 @@
         let timehours;
         let timeminutes;
         let timeseconds;
+        let startTimeD;
+        let startTimeP;
+        let startTimeG;
+        let startTimeT;
+        let startTimeK;
 
-        // Cek apakah ada waktu yang telah disimpan di localStorage sebelumnya
-        var startTimeD = localStorage.getItem("startTimeD");
-        var startTimeP = localStorage.getItem("startTimeP");
-        var startTimeG = localStorage.getItem("startTimeG");
-        var startTimeT = localStorage.getItem("startTimeT");
-        var startTimeK = localStorage.getItem("startTimeK");
         var segment = window.location.pathname;
 
-        // Jika tidak ada waktu yang disimpan sebelumnya, inisialisasikan waktu mulai baru
         if (segment == '/') {
             if (!startTimeD) {
                 startTimeD = Date.now().toString();
-                localStorage.setItem("startTimeD", startTimeD);
             }
         } else if (segment == '/produk') {
             if (!startTimeP) {
                 startTimeP = Date.now().toString();
-                localStorage.setItem("startTimeP", startTimeP);
             }
         } else if (segment == '/gallery') {
             if (!startTimeG) {
                 startTimeG = Date.now().toString();
-                localStorage.setItem("startTimeG", startTimeG);
+            }
+        } else if (segment == '/tentang') {
+            if (!startTimeT) {
+                startTimeT = Date.now().toString();
+            }
+        } else if (segment == '/kontak') {
+            if (!startTimeK) {
+                startTimeK = Date.now().toString();
             }
         }
 
@@ -48,13 +51,17 @@
         } else if (segment == '/gallery') {
             var endTime = Date.now();
             var duration = endTime - parseInt(startTimeG);
+        } else if (segment == '/tentang') {
+            var endTime = Date.now();
+            var duration = endTime - parseInt(startTimeT);
+        } else if (segment == '/kontak') {
+            var endTime = Date.now();
+            var duration = endTime - parseInt(startTimeK);
         }
+
         var seconds = Math.floor(duration / 1000);
         timeseconds = seconds;
         console.log("Durasi halaman: " + seconds + " milidetik");
-
-        // Hapus waktu mulai dari localStorage
-        localStorage.removeItem("startTime");
         }
 
         // Event saat pengguna berpindah ke halaman lain
@@ -76,10 +83,11 @@
             var screeny = window.innerHeight;
 
             var scrollx = document.documentElement.scrollWidth;
-            var scrolly = document.documentElement.scrollHeight;
+            var scrolly = document.body.clientHeight;
 
-            //onPageLoad();
-            //onPageUnload();
+            console.log("Scroll Koordinat X: " + scrollx);
+            console.log("Scroll Koordinat Y: " + scrolly);
+
             calculateDuration();
 
             // Mengirim pesan ke elemen induk dengan data koordinat
