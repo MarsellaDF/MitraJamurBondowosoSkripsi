@@ -1,6 +1,9 @@
 @extends('frontend.layouts.template')
 @push('js')
-    <script>
+<script>
+
+</script>
+    {{--  <script>
         // Add event listener to the document for a click event
         document.addEventListener('click', function(event) {
             // Mendapatkan koordinat x dan y
@@ -28,10 +31,10 @@
             });
 
         });
-    </script>
+    </script>  --}}
 @endpush
 @section('frontend.content')
-    <div id="timer">00:00:00</div>
+    {{--  <div id="timer">00:00:00</div>
     <script>
         // Mendapatkan elemen dengan ID "timer"
         var timerElement = document.getElementById('timer');
@@ -51,10 +54,10 @@
         }, 1000);
 
         // Menghentikan timer setelah 10 detik
-        {{--  setTimeout(function() {
+         setTimeout(function() {
             clearInterval(timer);
-        }, 10000);  --}}
-    </script>
+        }, 10000);
+    </script>  --}}
 
     <!-- galeri -->
     <div class="section-produk ">

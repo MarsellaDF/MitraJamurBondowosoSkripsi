@@ -7,6 +7,60 @@
 
 <body>
     <script>
+        let timehours;
+        let timeminutes;
+        let timeseconds;
+
+        // Cek apakah ada waktu yang telah disimpan di localStorage sebelumnya
+        var startTimeD = localStorage.getItem("startTimeD");
+        var startTimeP = localStorage.getItem("startTimeP");
+        var startTimeG = localStorage.getItem("startTimeG");
+        var startTimeT = localStorage.getItem("startTimeT");
+        var startTimeK = localStorage.getItem("startTimeK");
+        var segment = window.location.pathname;
+
+        // Jika tidak ada waktu yang disimpan sebelumnya, inisialisasikan waktu mulai baru
+        if (segment == '/') {
+            if (!startTimeD) {
+                startTimeD = Date.now().toString();
+                localStorage.setItem("startTimeD", startTimeD);
+            }
+        } else if (segment == '/produk') {
+            if (!startTimeP) {
+                startTimeP = Date.now().toString();
+                localStorage.setItem("startTimeP", startTimeP);
+            }
+        } else if (segment == '/gallery') {
+            if (!startTimeG) {
+                startTimeG = Date.now().toString();
+                localStorage.setItem("startTimeG", startTimeG);
+            }
+        }
+
+        // Fungsi untuk menghitung durasi halaman
+        function calculateDuration() {
+        if (segment == '/') {
+            var endTime = Date.now();
+            var duration = endTime - parseInt(startTimeD);
+        } else if (segment == '/produk') {
+            var endTime = Date.now();
+            var duration = endTime - parseInt(startTimeP);
+        } else if (segment == '/gallery') {
+            var endTime = Date.now();
+            var duration = endTime - parseInt(startTimeG);
+        }
+        var seconds = Math.floor(duration / 1000);
+        timeseconds = seconds;
+        console.log("Durasi halaman: " + seconds + " milidetik");
+
+        // Hapus waktu mulai dari localStorage
+        localStorage.removeItem("startTime");
+        }
+
+        // Event saat pengguna berpindah ke halaman lain
+        window.addEventListener("beforeunload", calculateDuration);
+
+
         // Menambahkan event listener untuk mendeteksi klik pada elemen di dalam iframe
         document.addEventListener("click", handleClick, false);
 
@@ -24,6 +78,10 @@
             var scrollx = document.documentElement.scrollWidth;
             var scrolly = document.documentElement.scrollHeight;
 
+            //onPageLoad();
+            //onPageUnload();
+            calculateDuration();
+
             // Mengirim pesan ke elemen induk dengan data koordinat
             parent.postMessage({
                 x: xCoordinate,
@@ -32,7 +90,8 @@
                 screenHeight: screeny,
                 scrollHorizontal: scrollx,
                 scrollVertical: scrolly,
-                body: segment
+                body: segment,
+                timeseconds:timeseconds,
             }, "*");
         }
     </script>

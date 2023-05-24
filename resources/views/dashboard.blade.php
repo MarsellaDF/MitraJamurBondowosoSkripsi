@@ -1,6 +1,6 @@
 @extends('frontend.layouts.template')
 @push('js')
-    <script>
+    {{--  <script>
         // Add event listener to the document for a click event
         document.addEventListener('click', function(event) {
             // Mendapatkan koordinat x dan y
@@ -28,11 +28,11 @@
             });
 
         });
-    </script>
+    </script>  --}}
 @endpush
 @section('frontend.content')
-    <div id="timer">00:00:00</div>
-    <script>
+    {{--  <div id="timer">00:00:00</div>  --}}
+    {{--  <script>
         // Mendapatkan elemen dengan ID "timer"
         var timerElement = document.getElementById('timer');
 
@@ -55,7 +55,7 @@
             clearInterval(timer);
         }, 10000);  --}}
 
-        function toggleDiv() {
+        {{--  function toggleDiv() {
             var x = document.getElementById("myDIV");
             if (x.style.display === "none") {
                 x.style.display = "block";
@@ -63,9 +63,9 @@
                 x.style.display = "none";
             }
         }
-    </script>
-    <button type="button" id="toggleDivButton" onclick="toggleDiv()">Toggle div</button>
-    <div id="myDIV" style="display:none;">Hidden content</div>
+    </script>  --}}
+    {{--  <button type="button" id="toggleDivButton" onclick="toggleDiv()">Toggle div</button>
+    <div id="myDIV" style="display:none;">Hidden content</div>  --}}
 
     <!-- slider -->
     <section class="home-slider my-5">

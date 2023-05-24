@@ -1,6 +1,41 @@
 @extends('frontend.layouts.template')
 @push('js')
     <script>
+        let timehours;
+        let timeminutes;
+        let timeseconds;
+
+        var startTime;
+
+        // Saat halaman dimuat
+        function onPageLoad() {
+            startTime = Date.now();
+        }
+
+        // Saat pengguna meninggalkan halaman
+        function onPageUnload() {
+            var endTime = Date.now();
+            var duration = endTime - startTime;
+
+            // Konversi durasi ke format yang sesuai
+            var seconds = Math.floor(duration / 1000);
+            var minutes = Math.floor(seconds / 60);
+            var hours = Math.floor(minutes / 60);
+
+            // Tampilkan durasi
+            timehours = hours;
+            timeminutes = minutes;
+            timeseconds = seconds;
+            console.log("Durasi halaman: " + hours + " jam, " + minutes + " menit, " + seconds + " detik");
+        }
+
+        // Menjalankan fungsi onPageLoad() saat halaman dimuat
+        window.addEventListener("load", onPageLoad);
+
+        // Menjalankan fungsi onPageUnload() saat pengguna meninggalkan halaman
+        window.addEventListener("beforeunload", onPageUnload);
+    </script>
+    {{--  <script>
         // Add event listener to the document for a click event
         document.addEventListener('click', function(event) {
             // Mendapatkan koordinat x dan y
@@ -28,10 +63,10 @@
             });
 
         });
-    </script>
+    </script>  --}}
 @endpush
 @section('frontend.content')
-    <div id="timer">00:00:00</div>
+    {{--  <div id="timer">00:00:00</div>
     <script>
         // Mendapatkan elemen dengan ID "timer"
         var timerElement = document.getElementById('timer');
@@ -51,10 +86,10 @@
         }, 1000);
 
         // Menghentikan timer setelah 10 detik
-        {{--  setTimeout(function() {
+          setTimeout(function() {
             clearInterval(timer);
-        }, 10000);  --}}
-    </script>
+        }, 10000);
+    </script>  --}}
 
     <!-- produk -->
     <div class="section-produk">
