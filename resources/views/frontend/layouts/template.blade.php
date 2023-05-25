@@ -15,8 +15,12 @@
         let startTimeG;
         let startTimeT;
         let startTimeK;
+        let startTimeDJT;
+        let startTimeOther;
 
         var segment = window.location.pathname;
+
+        console.log(segment);
 
         if (segment == '/') {
             if (!startTimeD) {
@@ -38,25 +42,31 @@
             if (!startTimeK) {
                 startTimeK = Date.now().toString();
             }
+        } else if (segment == '/produk/detail-produk/jamur-tiram') {
+            if (!startTimeDJT) {
+                startTimeDJT = Date.now().toString();
+            }
+        } else {
+            startTimeOther = Date.now().toString();
         }
 
         // Fungsi untuk menghitung durasi halaman
         function calculateDuration() {
+        var endTime = Date.now();
         if (segment == '/') {
-            var endTime = Date.now();
             var duration = endTime - parseInt(startTimeD);
         } else if (segment == '/produk') {
-            var endTime = Date.now();
             var duration = endTime - parseInt(startTimeP);
         } else if (segment == '/gallery') {
-            var endTime = Date.now();
             var duration = endTime - parseInt(startTimeG);
         } else if (segment == '/tentang') {
-            var endTime = Date.now();
             var duration = endTime - parseInt(startTimeT);
         } else if (segment == '/kontak') {
-            var endTime = Date.now();
             var duration = endTime - parseInt(startTimeK);
+        } else if (segment == '/produk/detail-produk/jamur-tiram') {
+            var duration = endTime - parseInt(startTimeDJT);
+        } else {
+            var duration = endTime - parseInt(startTimeOther);
         }
 
         var seconds = Math.floor(duration / 1000);
