@@ -110,9 +110,13 @@
 
                 </div>
                 <div class="col-md-8 card ">
+                    <div class="position-absolute"
+                        style="background-color:rgba(0, 0, 0, 0.5)000; width: 800px; height: 500px; z-index: 90">
+                    </div>
                     <iframe class="shadow-sm p-3 mb-5 bg-body rounded" src="{{ $dashboard->alamat }}" width="600"
                         height="450" style="border:0;" allowfullscreen="" loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
                 </div>
             </div>
             <div class="row">
